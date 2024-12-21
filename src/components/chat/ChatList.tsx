@@ -1,7 +1,6 @@
-import React from 'react';
-import { Search } from 'lucide-react';
-import { UserAvatar } from '../shared/UserAvatar';
-import { Chat } from '../../types/chat';
+import { Search } from "lucide-react";
+import { UserAvatar } from "../shared/UserAvatar";
+import { Chat } from "../../types/chat";
 
 interface ChatListProps {
   chats: Chat[];
@@ -11,7 +10,11 @@ interface ChatListProps {
 
 export function ChatList({ chats, selectedChat, onSelectChat }: ChatListProps) {
   return (
-    <div className={`w-full lg:w-80 border-r border-gray-200 ${selectedChat ? 'hidden lg:block' : 'block'}`}>
+    <div
+      className={`w-full lg:w-80 border-r border-gray-200 h-[90vh] overflow-y-auto ${
+        selectedChat ? "hidden lg:block" : "block"
+      }`}
+    >
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold">Messages</h2>
@@ -25,13 +28,13 @@ export function ChatList({ chats, selectedChat, onSelectChat }: ChatListProps) {
           />
         </div>
       </div>
-      <div className="overflow-y-auto h-[calc(100%-5rem)]">
+      <div className="overflow-y-auto">
         {chats.map((chat) => (
           <div
             key={chat.id}
             onClick={() => onSelectChat(chat)}
             className={`p-4 flex items-center space-x-3 hover:bg-gray-50 cursor-pointer ${
-              selectedChat?.id === chat.id ? 'bg-gray-50' : ''
+              selectedChat?.id === chat.id ? "bg-gray-50" : ""
             }`}
           >
             <UserAvatar src={chat.avatar} alt={chat.username} />
@@ -40,7 +43,9 @@ export function ChatList({ chats, selectedChat, onSelectChat }: ChatListProps) {
                 <h3 className="font-semibold truncate">{chat.username}</h3>
                 <span className="text-xs text-gray-500">{chat.time}</span>
               </div>
-              <p className="text-sm text-gray-500 truncate">{chat.lastMessage}</p>
+              <p className="text-sm text-gray-500 truncate">
+                {chat.lastMessage}
+              </p>
             </div>
             {chat.unread && (
               <div className="w-2 h-2 bg-blue-500 rounded-full"></div>

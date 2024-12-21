@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Image, Upload } from 'lucide-react';
+import React, { useRef } from "react";
+import { Image } from "lucide-react";
 
 interface UploadStepProps {
   onFileSelect: (file: File) => void;

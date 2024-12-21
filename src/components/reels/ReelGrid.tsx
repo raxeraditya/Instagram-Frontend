@@ -1,6 +1,5 @@
-import React from 'react';
-import { Play } from 'lucide-react';
-import { SAMPLE_REELS } from '../../data/reels';
+import { Play } from "lucide-react";
+import { SAMPLE_REELS } from "../../data/reels";
 
 interface ReelGridProps {
   onReelSelect: (reelId: number) => void;

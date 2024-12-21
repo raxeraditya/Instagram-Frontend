@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   Home,
   Search,
@@ -7,8 +7,8 @@ import {
   MessageCircle,
   PlusSquare,
   Instagram,
-} from 'lucide-react';
-import { cn } from '../../lib/utils';
+} from "lucide-react";
+import { cn } from "../../lib/utils";
 
 interface LinkProps {
   to: string;
@@ -24,10 +24,10 @@ function Link({ to, icon: Icon, label, state }: LinkProps) {
       state={state}
       className={({ isActive }) =>
         cn(
-          'flex items-center p-3 rounded-lg transition-colors',
-          'hover:bg-gray-100',
-          'lg:w-full',
-          isActive && 'font-bold'
+          "flex items-center p-3 rounded-lg transition-colors",
+          "hover:bg-gray-100",
+          "lg:w-full",
+          isActive && "font-bold"
         )
       }
     >
@@ -54,9 +54,9 @@ export function Sidebar() {
           <Link to="/search" icon={Search} label="Search" />
           <Link to="/reels" icon={Film} label="Reels" />
           <Link to="/messages" icon={MessageCircle} label="Messages" />
-          <Link 
-            to="/create" 
-            icon={PlusSquare} 
+          <Link
+            to="/create"
+            icon={PlusSquare}
             label="Create"
             state={{ from: location.pathname }}
           />
@@ -64,13 +64,13 @@ export function Sidebar() {
       </div>
 
       {/* Mobile Bottom Navigation */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
+      <div className="lg:hidden h-[10vh] fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
         <nav className="flex justify-around p-4">
           <Link to="/" icon={Home} />
           <Link to="/search" icon={Search} />
           <Link to="/reels" icon={Film} />
-          <Link 
-            to="/create" 
+          <Link
+            to="/create"
             icon={PlusSquare}
             state={{ from: location.pathname }}
           />

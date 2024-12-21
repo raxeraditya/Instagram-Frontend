@@ -1,51 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { Search as SearchIcon, X } from 'lucide-react';
-import { UserAvatar } from '../components/shared/UserAvatar';
-import type { SearchResult, SearchState } from '../types/search';
+import { useState } from "react";
+import { Search as SearchIcon, X } from "lucide-react";
+import { UserAvatar } from "../components/shared/UserAvatar";
+import type { SearchResult, SearchState } from "../types/search";
 
 const DUMMY_DATA: SearchResult[] = [
   {
     id: 1,
-    type: 'user',
-    username: 'photography_pro',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop',
-    followers: 15400
+    type: "user",
+    username: "photography_pro",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop",
+    followers: 15400,
   },
   {
     id: 2,
-    type: 'hashtag',
-    hashtag: 'photography',
-    posts: 2500000
+    type: "hashtag",
+    hashtag: "photography",
+    posts: 2500000,
   },
   {
     id: 3,
-    type: 'user',
-    username: 'travel_photography',
-    avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=60&h=60&fit=crop',
-    followers: 25300
+    type: "user",
+    username: "travel_photography",
+    avatar:
+      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=60&h=60&fit=crop",
+    followers: 25300,
   },
   {
     id: 4,
-    type: 'user',
-    username: 'photo_daily',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop',
-    followers: 12800
+    type: "user",
+    username: "photo_daily",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop",
+    followers: 12800,
   },
   {
     id: 5,
-    type: 'hashtag',
-    hashtag: 'photooftheday',
-    posts: 1800000
-  }
+    type: "hashtag",
+    hashtag: "photooftheday",
+    posts: 1800000,
+  },
 ];
 
-function SearchResultItem({ result, onSelect }: { result: SearchResult; onSelect: (result: SearchResult) => void }) {
+function SearchResultItem({
+  result,
+  onSelect,
+}: {
+  result: SearchResult;
+  onSelect: (result: SearchResult) => void;
+}) {
   return (
     <div
       className="flex items-center p-4 hover:bg-gray-50 cursor-pointer"
       onClick={() => onSelect(result)}
     >
-      {result.type === 'user' ? (
+      {result.type === "user" ? (
         <>
           <UserAvatar src={result.avatar!} alt={result.username!} />
           <div className="ml-3">
@@ -74,40 +83,45 @@ function SearchResultItem({ result, onSelect }: { result: SearchResult; onSelect
 
 export function SearchPage() {
   const [searchState, setSearchState] = useState<SearchState>({
-    query: '',
+    query: "",
     results: [],
-    recentSearches: []
+    recentSearches: [],
   });
 
   const handleSearch = (query: string) => {
-    setSearchState(prev => ({
+    setSearchState((prev) => ({
       ...prev,
       query,
       results: query
         ? DUMMY_DATA.filter(
-            item =>
-              (item.type === 'user' && item.username?.toLowerCase().includes(query.toLowerCase())) ||
-              (item.type === 'hashtag' && item.hashtag?.toLowerCase().includes(query.toLowerCase()))
+            (item) =>
+              (item.type === "user" &&
+                item.username?.toLowerCase().includes(query.toLowerCase())) ||
+              (item.type === "hashtag" &&
+                item.hashtag?.toLowerCase().includes(query.toLowerCase()))
           )
-        : []
+        : [],
     }));
   };
 
   const handleSelect = (result: SearchResult) => {
-    setSearchState(prev => ({
+    setSearchState((prev) => ({
       ...prev,
-      recentSearches: [result, ...prev.recentSearches.filter(item => item.id !== result.id)].slice(0, 5)
+      recentSearches: [
+        result,
+        ...prev.recentSearches.filter((item) => item.id !== result.id),
+      ].slice(0, 5),
     }));
   };
 
   const clearSearch = () => {
-    setSearchState(prev => ({ ...prev, query: '', results: [] }));
+    setSearchState((prev) => ({ ...prev, query: "", results: [] }));
   };
 
   const removeRecent = (id: number) => {
-    setSearchState(prev => ({
+    setSearchState((prev) => ({
       ...prev,
-      recentSearches: prev.recentSearches.filter(item => item.id !== id)
+      recentSearches: prev.recentSearches.filter((item) => item.id !== id),
     }));
   };
 
@@ -140,7 +154,7 @@ export function SearchPage() {
         <div className="divide-y divide-gray-200">
           {searchState.query ? (
             searchState.results.length > 0 ? (
-              searchState.results.map(result => (
+              searchState.results.map((result) => (
                 <SearchResultItem
                   key={result.id}
                   result={result}
@@ -160,9 +174,15 @@ export function SearchPage() {
                     <h3 className="font-semibold">Recent Searches</h3>
                   </div>
                   <div className="space-y-2">
-                    {searchState.recentSearches.map(result => (
-                      <div key={result.id} className="flex items-center justify-between">
-                        <SearchResultItem result={result} onSelect={handleSelect} />
+                    {searchState.recentSearches.map((result) => (
+                      <div
+                        key={result.id}
+                        className="flex items-center justify-between"
+                      >
+                        <SearchResultItem
+                          result={result}
+                          onSelect={handleSelect}
+                        />
                         <button
                           onClick={() => removeRecent(result.id)}
                           className="p-2 hover:bg-gray-100 rounded-full"

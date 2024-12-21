@@ -1,6 +1,5 @@
-import React from 'react';
-import { LucideIcon } from 'lucide-react';
-import { cn } from '../../lib/utils';
+import { LucideIcon } from "lucide-react";
+import { cn } from "../../lib/utils";
 
 interface LinkProps {
   href: string;
@@ -14,10 +13,10 @@ export function Link({ href, icon: Icon, label, active }: LinkProps) {
     <a
       href={href}
       className={cn(
-        'flex items-center p-3 rounded-lg transition-colors',
-        'hover:bg-gray-100',
-        'lg:w-full',
-        active && 'font-bold'
+        "flex items-center p-3 rounded-lg transition-colors",
+        "hover:bg-gray-100",
+        "lg:w-full",
+        active && "font-bold"
       )}
     >
       <Icon className="w-6 h-6" />

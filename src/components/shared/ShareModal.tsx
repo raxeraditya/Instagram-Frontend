@@ -1,5 +1,4 @@
-import React from 'react';
-import { X, Link as LinkIcon, Facebook, Twitter, Share2 } from 'lucide-react';
+import { X, Link as LinkIcon, Facebook, Twitter, Share2 } from "lucide-react";
 
 interface ShareModalProps {
   postUrl: string;
@@ -10,9 +9,9 @@ export function ShareModal({ postUrl, onClose }: ShareModalProps) {
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(postUrl);
-      alert('Link copied to clipboard!');
+      alert("Link copied to clipboard!");
     } catch (err) {
-      console.error('Failed to copy link:', err);
+      console.error("Failed to copy link:", err);
     }
   };
 
@@ -21,10 +20,7 @@ export function ShareModal({ postUrl, onClose }: ShareModalProps) {
       <div className="bg-white rounded-xl max-w-sm w-full mx-4">
         <div className="border-b border-gray-200 p-4 text-center relative">
           <h2 className="font-semibold">Share</h2>
-          <button
-            onClick={onClose}
-            className="absolute right-4 top-4"
-          >
+          <button onClick={onClose} className="absolute right-4 top-4">
             <X className="w-5 h-5" />
           </button>
         </div>

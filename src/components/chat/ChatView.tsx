@@ -1,7 +1,6 @@
-import React from 'react';
-import { ArrowLeft, Phone, Video, Info } from 'lucide-react';
-import { UserAvatar } from '../shared/UserAvatar';
-import { Chat, Message } from '../../types/chat';
+import { ArrowLeft, Phone, Video, Info } from "lucide-react";
+import { UserAvatar } from "../shared/UserAvatar";
+import { Chat, Message } from "../../types/chat";
 
 interface ChatViewProps {
   chat: Chat;
@@ -11,11 +10,17 @@ interface ChatViewProps {
   onBack: () => void;
 }
 
-export function ChatView({ chat, messages, message, setMessage, onBack }: ChatViewProps) {
+export function ChatView({
+  chat,
+  messages,
+  message,
+  setMessage,
+  onBack,
+}: ChatViewProps) {
   return (
-    <div className={`flex-1 flex flex-col`}>
+    <div className="flex-1 flex flex-col h-[90vh]">
       {/* Chat Header */}
-      <div className="p-4 border-b border-gray-200 flex items-center justify-between">
+      <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-white">
         <div className="flex items-center space-x-3">
           <button onClick={onBack} className="lg:hidden">
             <ArrowLeft className="w-6 h-6" />
@@ -41,13 +46,13 @@ export function ChatView({ chat, messages, message, setMessage, onBack }: ChatVi
         {messages.map((msg) => (
           <div
             key={msg.id}
-            className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${
+              msg.sender === "user" ? "justify-end" : "justify-start"
+            }`}
           >
             <div
               className={`max-w-[70%] rounded-lg p-3 ${
-                msg.sender === 'user'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-100'
+                msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-100"
               }`}
             >
               <p>{msg.text}</p>
@@ -60,8 +65,8 @@ export function ChatView({ chat, messages, message, setMessage, onBack }: ChatVi
       </div>
 
       {/* Message Input */}
-      <div className="p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-2">
+      <div className="p-4 border-t border-gray-200 bg-white">
+        <div className="flex items-center space-x-2 mx-auto">
           <input
             type="text"
             value={message}

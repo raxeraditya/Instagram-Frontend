@@ -1,5 +1,4 @@
-import React from 'react';
-import { UserAvatar } from '../shared/UserAvatar';
+import { UserAvatar } from "../shared/UserAvatar";
 
 interface SuggestionProps {
   username: string;
@@ -42,7 +41,9 @@ export function SuggestionsBar() {
 
       {/* Suggestions Header */}
       <div className="flex justify-between mb-4">
-        <span className="text-gray-500 font-semibold text-sm">Suggestions For You</span>
+        <span className="text-gray-500 font-semibold text-sm">
+          Suggestions For You
+        </span>
         <button className="text-xs font-semibold">See All</button>
       </div>
 
@@ -52,7 +53,9 @@ export function SuggestionsBar() {
           <SuggestionItem
             key={i}
             username={`user_${i}`}
-            userImage={`https://images.unsplash.com/photo-${1500000000000 + i}?w=40&h=40&fit=crop`}
+            userImage={`https://images.unsplash.com/photo-${
+              1500000000000 + i
+            }?w=40&h=40&fit=crop`}
             subtitle="Followed by user_x + 2 more"
           />
         ))}
@@ -61,12 +64,8 @@ export function SuggestionsBar() {
       {/* Footer Links */}
       <div className="mt-6 text-xs text-gray-400">
         <div className="flex flex-wrap gap-x-2 gap-y-1 mb-4">
-          <a href="#">About</a>•
-          <a href="#">Help</a>•
-          <a href="#">Press</a>•
-          <a href="#">API</a>•
-          <a href="#">Jobs</a>•
-          <a href="#">Privacy</a>•
+          <a href="#">About</a>•<a href="#">Help</a>•<a href="#">Press</a>•
+          <a href="#">API</a>•<a href="#">Jobs</a>•<a href="#">Privacy</a>•
           <a href="#">Terms</a>
         </div>
         <p>© 2024 Instagram Clone</p>
